@@ -1,0 +1,63 @@
+[manifest]
+version = "1.0.0"
+priority = 0
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+position = "after"
+times = 1
+pattern = "G.UIDEF = {}"
+payload = """
+local _, _, __kasimeka_fps_cap_p_wflags = love.window.getMode()
+local __kasimeka_fps_cap_options = {
+  labels = {"Monitor", 30, 60, 90, 120, 144, 240, "Max"},
+  reverse_lookup  = {
+    ["Monitor"] = 1,
+    [30] = 2,
+    [60] = 3,
+    [90] = 4,
+    [120] = 5,
+    [144] = 6,
+    [240] = 7,
+    ["Max"] = 8,
+  },
+  values  = {
+    ["Monitor"] = __kasimeka_fps_cap_p_wflags.refreshrate,
+    [30] = 30,
+    [60] = 60,
+    [90] = 90,
+    [120] = 120,
+    [144] = 144,
+    [240] = 240,
+    ["Max"] = 500,
+  },
+}
+G.FUNCS.__kasimeka_fps_cap_callback = function(option)
+  G.SETTINGS.__kasimeka_fps_cap = option.to_val
+  G.FPS_CAP = __kasimeka_fps_cap_options.values[option.to_val]
+end
+G.FUNCS.__kasimeka_fps_cap_callback {
+  to_val = G.SETTINGS.__kasimeka_fps_cap or "Monitor"
+}
+"""
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+position = "after"
+times = 1
+pattern = "create_option_cycle({w = 4,scale = 0.8, label = localize(\"b_set_CRT_bloom\"),options = localize('ml_bloom_opt'), opt_callback = 'change_crt_bloom', current_option = G.SETTINGS.GRAPHICS.bloom}),"
+payload = """
+{n = G.UIT.R, config = {align = "cm", r = 0}, nodes = {create_option_cycle{
+  label = "FPS Limit",
+  scale = 0.8,
+  options = __kasimeka_fps_cap_options.labels,
+  opt_callback = '__kasimeka_fps_cap_callback',
+  current_option =
+    __kasimeka_fps_cap_options.reverse_lookup[G.SETTINGS.__kasimeka_fps_cap],
+}}},
+"""
+match_indent = true
+

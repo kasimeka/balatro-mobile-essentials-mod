@@ -1,0 +1,12 @@
+[manifest]
+version = "1.0.0"
+priority = 0
+
+[[patches]]
+[patches.pattern]
+target = "functions/button_callbacks.lua"
+position = "at"
+times = 1
+pattern = "G.CONTROLLER.text_input_hook == e and G.CONTROLLER.HID.controller"
+payload = "if G.CONTROLLER.text_input_hook == e and (G.CONTROLLER.HID.controller or G.CONTROLLER.HID.touch) then"
+match_indent = true

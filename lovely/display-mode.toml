@@ -1,0 +1,12 @@
+[manifest]
+version = "1.0.0"
+priority = 0
+
+[[patches]]
+[patches.pattern]
+target = "main.lua"
+position = "after"
+times = 1
+pattern = "local os = love.system.getOS()"
+payload = "love.window.setMode(2, 1, {highdpi = (os == 'OS X' or os == 'iOS')})"
+match_indent = true

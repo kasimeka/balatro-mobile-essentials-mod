@@ -1,0 +1,27 @@
+[manifest]
+version = "1.0.0"
+priority = 0
+
+[[patches]]
+[patches.pattern]
+target = "globals.lua"
+position = "before"
+times = 1
+pattern = "if love.system.getOS() == 'Windows' then"
+payload = '''
+if love.system.getOS() == 'Android' or love.system.getOS() == 'iOS' then
+    self.F_NO_ACHIEVEMENTS = true
+    self.F_CRASH_REPORTS = false
+
+    self.F_MOBILE_UI = true
+    self.F_QUIT_BUTTON = false
+
+    self.F_SAVE_TIMER = 5
+
+    self.F_VIDEO_SETTINGS = false
+    self.F_ENGLISH_ONLY = false
+    self.F_SOUND_THREAD = true
+    self.F_DISCORD = true
+end
+'''
+match_indent = true
