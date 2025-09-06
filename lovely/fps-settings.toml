@@ -9,6 +9,7 @@ position = "after"
 times = 1
 pattern = "G.UIDEF = {}"
 payload = """
+G.SETTINGS.WINDOW.vsync = 0
 local _, _, __kasimeka_fps_cap_p_wflags = love.window.getMode()
 local __kasimeka_fps_cap_options = {
   labels = {"Monitor", 30, 60, 90, 120, 144, 240, "Max"},
