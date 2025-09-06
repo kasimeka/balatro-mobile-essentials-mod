@@ -7,6 +7,6 @@ priority = 0
 target = "functions/button_callbacks.lua"
 position = "at"
 times = 1
-pattern = "G.CONTROLLER.text_input_hook == e and G.CONTROLLER.HID.controller"
+pattern = "if G.CONTROLLER.text_input_hook == e and G.CONTROLLER.HID.controller then"
 payload = "if G.CONTROLLER.text_input_hook == e and (G.CONTROLLER.HID.controller or G.CONTROLLER.HID.touch) then"
 match_indent = true
