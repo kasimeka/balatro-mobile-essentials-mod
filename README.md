@@ -28,5 +28,5 @@ adds feature flags for the 'Android' and 'iOS' platforms that
 
 ## extra recommendations
 
-- [Sticky Fingers](https://github.com/eramdam/sticky-fingers) - a port of the mobile release's touch controls (depends on smods)
+- [Sticky Fingers](https://github.com/eramdam/sticky-fingers) - a port of the mobile release's touch controls (requires smods)
 - [DismissAlert](https://github.com/Breezebuilder/DismissAlert) - allows the discovery alert icons to be dismissed and hidden by tapping their ❗ icon
