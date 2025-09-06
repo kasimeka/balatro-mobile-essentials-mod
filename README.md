@@ -1,6 +1,6 @@
 # Balatro Mobile Essentials
 
-a set of essential mods to run the desktop release of Balatro on mobile devices.
+a set of essential lovely patches to run the desktop release of Balatro on mobile devices.
 
 ## included mods
 
