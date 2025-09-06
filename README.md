@@ -7,15 +7,16 @@ a set of essential mods to run the desktop release of Balatro on mobile devices.
 ### display-mode
 
 - forces the game to run in landscape only
-- enables hidpi mode for iOS devices
+- enables hidpi mode for mobile devices
 
 ### touch-keyboard
 
-- enables the controller-mode keyboard settings for devices with touch input
+- enables the controller-mode keyboard for devices with touch input
 
 ### fps-settings
 
-- limits the game's fps to the device's current refresh rate on launch (by default)
+- disables vsync
+- limits the game's fps to the device's refresh rate on launch (by default)
 - adds an "FPS Limit" option to the graphics settings menu for manual adjustment
 
 ### feature-flags
