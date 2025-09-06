@@ -4,12 +4,25 @@ priority = 0
 
 [[patches]]
 [patches.pattern]
+target = "main.lua"
+position = "after"
+times = 1
+pattern = "G:start_up()"
+payload = """
+G.SETTINGS.WINDOW.vsync = 0
+G.FUNCS.__kasimeka_fps_cap_callback {
+  to_val = G.SETTINGS.__kasimeka_fps_cap or "Monitor"
+}
+"""
+match_indent = true
+
+[[patches]]
+[patches.pattern]
 target = "functions/UI_definitions.lua"
 position = "after"
 times = 1
 pattern = "G.UIDEF = {}"
 payload = """
-G.SETTINGS.WINDOW.vsync = 0
 local _, _, __kasimeka_fps_cap_p_wflags = love.window.getMode()
 local __kasimeka_fps_cap_options = {
   labels = {"Monitor", 30, 60, 90, 120, 144, 240, "Max"},
@@ -38,9 +51,6 @@ G.FUNCS.__kasimeka_fps_cap_callback = function(option)
   G.SETTINGS.__kasimeka_fps_cap = option.to_val
   G.FPS_CAP = __kasimeka_fps_cap_options.values[option.to_val]
 end
-G.FUNCS.__kasimeka_fps_cap_callback {
-  to_val = G.SETTINGS.__kasimeka_fps_cap or "Monitor"
-}
 """
 match_indent = true
 
