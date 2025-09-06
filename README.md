@@ -2,7 +2,7 @@
 
 a set of essential mods to run the desktop release of Balatro on mobile devices.
 
-## Included Mods
+## included mods
 
 ### fps-settings
 
@@ -25,3 +25,8 @@ adds feature flags for the 'Android' and 'iOS' platforms that
 ### touch-keyboard
 
 - enable the controller-mode keyboard settings for devices with touch input
+
+## more recommendations
+
+- [Dismiss Alert](https://github.com/Breezebuilder/DismissAlert) - allows the discovery alert icons to be dismissed and hidden by tapping their ❗ icon
+- [Sticky Fingers](https://github.com/eramdam/sticky-fingers) - a port of the mobile release's touch controls (depends on smods)
