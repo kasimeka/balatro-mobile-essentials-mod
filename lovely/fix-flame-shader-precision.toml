@@ -1,0 +1,29 @@
+[manifest]
+version = "1.0.0"
+priority = 0
+
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+position = "at"
+times = 1
+pattern = 'self.SHADERS[shader_name] = love.graphics.newShader("resources/shaders/"..filename)'
+payload = '''
+if
+    shader_name == "flame"
+    and "OpenGL ES" == love.graphics.getRendererInfo()
+then
+    local code = love.filesystem
+        .read("resources/shaders/" .. filename)
+        :gsub("#endif", "#endif\nprecision MY_HIGHP_OR_MEDIUMP float;", 1)
+        :gsub(
+            "vec4 effect%( vec4 colour, Image texture, vec2 texture_coords, vec2 screen_coords %)",
+            "mediump vec4 effect%( mediump vec4 colour, Image texture, mediump vec2 texture_coords, mediump vec2 screen_coords %)",
+            1
+        )
+    self.SHADERS[shader_name] = love.graphics.newShader(code)
+else
+    self.SHADERS[shader_name] = love.graphics.newShader("resources/shaders/" .. filename)
+end
+'''
+match_indent = true

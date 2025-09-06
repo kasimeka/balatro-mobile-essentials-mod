@@ -1,3 +1,4 @@
+<!-- markdownlint-disable line-length -->
 # Balatro Mobile Essentials
 
 a set of essential lovely patches to run the desktop release of Balatro on mobile devices.
@@ -26,6 +27,10 @@ adds feature flags for the 'Android' and 'iOS' platforms that
 - disable achievements and crash reports
 - enable the mobile UI and hide the quit button
 - disable window and resolution settings (they're unusable on mobile)
+
+### fix-flame-shader-precision
+
+fixes the score flame effect breaking on relatively low scores when rendered with "OpenGL ES"
 
 ## extra recommendations
 
